@@ -43,5 +43,5 @@ Errori FloodWait: Lo script attende automaticamente il tempo richiesto in caso d
 ### Contribuire
 Le richieste di nuove funzionalità e i miglioramenti sono benvenuti! Puoi inviare una pull request o aprire un issue.
 
- ###Licenza
+### Licenza
 Questo progetto è distribuito sotto la licenza MIT. Consulta il file LICENSE per maggiori dettagli.
