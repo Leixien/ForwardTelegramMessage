@@ -1,47 +1,68 @@
-# Telegram Forward Bot
+# Telegram Message Forwarder Script
 
-Un bot Telegram scritto in Python per inoltrare automaticamente i messaggi da una chat sorgente a una chat di destinazione.
+Script Telegram scritto in Python per inoltrare automaticamente messaggi da una chat a un'altra, con funzionalità avanzate di filtro basate su parole chiave.
 
-### Caratteristiche
-- **Selezione dinamica delle chat**: Scegli la chat sorgente e quella di destinazione tra le chat disponibili all'avvio dello script.
-- **Gestione degli errori**: Supporta `FloodWait` e notifiche in caso di arresto del bot.
-- **Monitoraggio dello stato**: Avvisa la chat di destinazione con un messaggio "OFFLINE" in caso di crash.
+## Caratteristiche
+- **Inoltro dinamico dei messaggi**: Inoltra i messaggi da una chat sorgente a una destinazione, con opzione per filtrare messaggi contenenti parole chiave specifiche.
+- **Elenco delle chat**: Recupera e salva la lista di tutte le chat/dialoghi disponibili, facilitando la selezione di sorgente e destinazione.
+- **Supporto per credenziali**: Consente di salvare e riutilizzare le credenziali per evitare ripetuti login.
+- **Interfaccia interattiva**: Menu per scegliere tra elencare le chat o avviare l'inoltro.
 
-### Requisiti
+## Requisiti
 - Python 3.7 o superiore
-- Libreria Pyrogram
+- Libreria **Telethon**
 
-### Installazione
-1. Clona il repository:
+## Installazione
+
+Clona il repository:
+   ```bash
+   git clone https://github.com/tuo-username/telegram-forward-script.git
+   cd telegram-forward-script
+   ```
+Installa le dipendenze:
+  ```bash
+  pip install telethon
+  ```
+
+Crea un'app Telegram su my.telegram.org per ottenere:
+  1. API ID
+  2. API Hash 
+
+## Utilizzo
+Avvio dello script:
 ```bash
-git clone https://github.com/tuo-username/telegram-forward-bot.git
-
-cd telegram-forward-bot
+python _init_.py
 ```
 
-### Installa le dipendenze:
-```bash
-pip install pyrogram
+Elenco delle chat:
+  Seleziona l'opzione 1 per recuperare e salvare la lista delle chat in un file chiamato chats_of_<phone_number>.txt.
+  Usa questo file per trovare gli ID delle chat desiderate.
+
+Inoltro messaggi:
+  Seleziona l'opzione 2 per avviare l'inoltro dei messaggi.
+  Inserisci l'ID della chat sorgente e della chat di destinazione.
+  Specifica delle parole chiave per filtrare i messaggi (opzionale).
+  
+## Funzionamento
+
+  **Inoltro basato su parole chiave**: Se fornisci parole chiave, verranno inoltrati solo i messaggi che le contengono. Se lasci vuoto, inoltrerà tutti i messaggi.
+  
+  **Controllo continuo**: Lo script verifica costantemente i nuovi messaggi nella chat sorgente e li inoltra alla destinazione.
+
+Esempio di Output:
+```yaml
+1. Nome: Chat Personale | ID: 12345678
+2. Nome: Canale Privato | ID: -1009876543210
+3. Nome: Gruppo Test | ID: -1001234567890
 ```
 
-Crea un'app Telegram su my.telegram.org per ottenere API_ID e API_HASH.
-Modifica le variabili API_ID, API_HASH, e SESSION_NAME nel file dello script.
+Esempio di forwarding:
 
-### Utilizzo
-Esegui lo script:
-```bash
-python telegram_forward_bot.py
+```arduino
+Controllo nuovi messaggi e inoltro...
+Messaggio ricevuto da -1001234567890: "Offerta speciale oggi!"
+Messaggio inoltrato a -1009876543210.
 ```
 
-All'avvio, lo script mostrerà un elenco delle chat disponibili. Seleziona la chat sorgente e quella di destinazione inserendo il numero corrispondente.
-Lo script inoltrerà automaticamente i messaggi dalla sorgente alla destinazione.
-
-### Funzionamento
-Monitoraggio: Lo script verifica costantemente il suo stato. In caso di errore, invia una notifica di stato "OFFLINE" alla chat di destinazione.
-Errori FloodWait: Lo script attende automaticamente il tempo richiesto in caso di limitazioni di frequenza da parte di Telegram.
-
-### Contribuire
-Le richieste di nuove funzionalità e i miglioramenti sono benvenuti! Puoi inviare una pull request o aprire un issue.
-
-### Licenza
+## Licenza
 Questo progetto è distribuito sotto la licenza MIT. Consulta il file LICENSE per maggiori dettagli.
