@@ -78,7 +78,6 @@ class TelegramForwarder:
             # Aspetta prima di controllare nuovi messaggi
             await asyncio.sleep(5)
 
-
 # Funzione per leggere le credenziali da file
 def read_credentials():
     try:
